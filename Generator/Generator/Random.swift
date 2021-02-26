@@ -16,7 +16,7 @@ extension Int: Randomizable {
     static func random() -> Int {
         return random(in: min...max)
     }
-    
+
     static func random(to x: Int) -> Int {
         if x > 0 {
             return random(in: 0...x)

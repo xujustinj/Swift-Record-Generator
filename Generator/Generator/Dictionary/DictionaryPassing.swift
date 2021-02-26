@@ -13,11 +13,11 @@ func dictionaryPassing(mutable: Bool) -> String {
     func dictionary\(mutable ? _Var : _Let)Passing(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) record = randomRecordDictionary()
         \(MAKE_ARRAY("declarations"))
-    
+
         \(START_MEASURING)
         \(USE_RECORD)
         \(INCREMENT_COUNTER)
-    
+
         \(mutable ? "record = randomRecordDictionary()" : "")
         \(MAKE_ARRAY())
     }

@@ -13,11 +13,11 @@ func classPassing(mutable: Bool) -> String {
     func class\(mutable ? _Var : _Let)Passing(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) record = randomRecordClass()
         \(MAKE_ARRAY("declarations"))
-    
+
         \(START_MEASURING)
         \(USE_RECORD)
         \(INCREMENT_COUNTER)
-    
+
         \(mutable ? "record = randomRecordClass()" : "")
         \(MAKE_ARRAY())
     }

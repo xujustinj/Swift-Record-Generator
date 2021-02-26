@@ -13,12 +13,12 @@ func dictionarySerialization(mutable: Bool) -> String {
     func dictionary\(mutable ? _Var : _Let)Serialization(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) record = randomRecordDictionary()
         \(MAKE_ARRAY("declarations"))
-    
+
         \(START_MEASURING)
         let recordSerialized = try! JSONSerialization.data(withJSONObject: record)
         \(END_MEASURING)
         \(INCREMENT_COUNTER)
-    
+
         \(mutable ? "record = randomRecordDictionary()" : "")
         \(MAKE_ARRAY(of: ["recordSerialized"]))
     }

@@ -10,7 +10,7 @@ import Foundation
 
 func dictionarySorting(by element: Element, mutable: Bool) -> String {
     let sort = mutable ? "array.sort" : "let sorted = array.sorted"
-    
+
     var criterion: String
     if element.isOptional {
         if element.wrapper == .none {
@@ -28,7 +28,7 @@ func dictionarySorting(by element: Element, mutable: Bool) -> String {
             criterion = "$0.\(element.getter)(key: \(element.key)).count < $1.\(element.getter)(key: \(element.key)).count"
         }
     }
-    
+
     return """
     func dictionary\(mutable ? _Var : _Let)Sorting(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) array = fill(ARRAY_SIZE) { randomRecordDictionary() }

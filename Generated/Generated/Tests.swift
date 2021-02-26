@@ -22,14 +22,14 @@ func printSettings() {
                TEST_COUNT: \(TEST_COUNT)
                ARRAY_SIZE: \(ARRAY_SIZE)
          ARRAY_TEST_COUNT: \(ARRAY_TEST_COUNT)
-    
+
         MAX_STRING_LENGTH: \(MAX_STRING_LENGTH)
           MIN_NAME_LENGTH: \(MIN_NAME_LENGTH)
           MAX_NAME_LENGTH: \(MAX_NAME_LENGTH)
       MAX_COLLECTION_SIZE: \(MAX_COLLECTION_SIZE)
-        
+
     SANITY_CHECKS_ENABLED: \(SANITY_CHECKS_ENABLED)
-        
+
     ELEMENTS:
     \(ELEMENTS)
     """)
@@ -43,7 +43,7 @@ func measureHashing(times: Int) {
     }
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO HASH A DICTIONARY KEY
         \(Double(time) / Double(ELEMENT_COUNT * times)) ns
         """)
@@ -65,7 +65,7 @@ func measureInitialization(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetInitialization(&dictionaryLetTime) },
                    { dictionaryVarInitialization(&dictionaryVarTime) },
                    { structureLetInitialization(&structureLetTime) },
@@ -78,10 +78,10 @@ func measureInitialization(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO INITIALIZE, PER ELEMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(ELEMENT_COUNT * times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(ELEMENT_COUNT * times)) ns
@@ -117,7 +117,7 @@ func measureRetrieval(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetRetrieval(&dictionaryLetTime) },
                    { dictionaryVarRetrieval(&dictionaryVarTime) },
                    { structureLetRetrieval(&structureLetTime) },
@@ -130,10 +130,10 @@ func measureRetrieval(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO RETRIEVE AN ELEMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(ELEMENT_COUNT * times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(ELEMENT_COUNT * times)) ns
@@ -169,7 +169,7 @@ func measureMutation(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetMutation(&dictionaryLetTime) },
                    { dictionaryVarMutation(&dictionaryVarTime) },
                    { structureLetMutation(&structureLetTime) },
@@ -182,10 +182,10 @@ func measureMutation(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO MUTATE AN ELEMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(MUTABLE_ELEMENT_COUNT * times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(MUTABLE_ELEMENT_COUNT * times)) ns
@@ -221,7 +221,7 @@ func measurePassing(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetPassing(&dictionaryLetTime) },
                    { dictionaryVarPassing(&dictionaryVarTime) },
                    { structureLetPassing(&structureLetTime) },
@@ -234,10 +234,10 @@ func measurePassing(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO PASS AS FUNCTION ARGUMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(times)) ns
@@ -273,7 +273,7 @@ func measureSerialization(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetSerialization(&dictionaryLetTime) },
                    { dictionaryVarSerialization(&dictionaryVarTime) },
                    { structureLetSerialization(&structureLetTime) },
@@ -286,10 +286,10 @@ func measureSerialization(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-        
+
         MEAN TIME TO SERIALIZE TO JSON, PER ELEMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(ELEMENT_COUNT * times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(ELEMENT_COUNT * times)) ns
@@ -325,7 +325,7 @@ func measureDeserialization(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetDeserialization(&dictionaryLetTime) },
                    { dictionaryVarDeserialization(&dictionaryVarTime) },
                    { structureLetDeserialization(&structureLetTime) },
@@ -338,10 +338,10 @@ func measureDeserialization(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO DESERIALIZE FROM JSON, PER ELEMENT
            dictionary (let): \(Double(dictionaryLetTime) / Double(ELEMENT_COUNT * times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(ELEMENT_COUNT * times)) ns
@@ -377,7 +377,7 @@ func measureSorting(times: Int) {
     var structureCOWVarTime: UInt64 = 0
     var classLetTime: UInt64 = 0
     var classVarTime: UInt64 = 0
-    
+
     var actions = [{ dictionaryLetSorting(&dictionaryLetTime) },
                    { dictionaryVarSorting(&dictionaryVarTime) },
                    { structureLetSorting(&structureLetTime) },
@@ -390,10 +390,10 @@ func measureSorting(times: Int) {
         actions.shuffle()
         actions.forEach { $0() }
     }
-    
+
     if VERBOSE {
         print("""
-            
+
         MEAN TIME TO SORT ARRAY OF \(ARRAY_SIZE) RECORDS
            dictionary (let): \(Double(dictionaryLetTime) / Double(times)) ns
            dictionary (var): \(Double(dictionaryVarTime) / Double(times)) ns

@@ -18,11 +18,9 @@ struct Box {
     @inline(__always) init(_ val: RecordStructure) {
         self.ref = Ref(val)
     }
-    
+
     var val: RecordStructure {
         @inline(__always) get { return self.ref.val }
         @inline(__always) set { if isKnownUniquelyReferenced(&ref) { self.ref.val = newValue } else { self.ref = Ref(newValue) } }
     }
 }
-
-

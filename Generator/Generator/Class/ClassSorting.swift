@@ -10,7 +10,7 @@ import Foundation
 
 func classSorting(by element: Element, mutable: Bool) -> String {
     let sort = mutable ? "array.sort" : "let sorted = array.sorted"
-    
+
     var criterion: String
     if element.isOptional {
         if element.wrapper == .none {
@@ -28,7 +28,7 @@ func classSorting(by element: Element, mutable: Bool) -> String {
             criterion = "$0.\(element.name).count < $1.\(element.name).count"
         }
     }
-    
+
     return """
     func class\(mutable ? _Var : _Let)Sorting(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) array = fill(ARRAY_SIZE) { randomRecordClass() }

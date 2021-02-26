@@ -18,7 +18,7 @@ enum ElementType: String, CustomStringConvertible {
     case bool = "Bool"
     case string = "String"
     case date = "Date"
-    
+
     var description: String {
         return self.rawValue
     }
@@ -28,7 +28,7 @@ enum ElementWrapper: String, CustomStringConvertible {
     case none = ""
     case array = "Array"
     case dictionary = "Dictionary"
-    
+
     func wrap(_ type: ElementType) -> String {
         switch self {
         case .none:
@@ -39,7 +39,7 @@ enum ElementWrapper: String, CustomStringConvertible {
             return "[String : \(type)]"
         }
     }
-    
+
     var description: String {
         switch self {
         case .none: return "none"
@@ -55,12 +55,12 @@ struct Element: CustomStringConvertible {
     let wrapper: ElementWrapper
     let isOptional: Bool
     let isMutable: Bool
-    
+
     func randomValue() -> String {
         func randomString(length: Int) -> String {
             return String((0..<length).map { _ in VALID_NAME_CHARS.randomElement()! })
         }
-        
+
         func wrap(generator: () -> String) -> String {
             switch wrapper {
             case .none:
@@ -71,11 +71,11 @@ struct Element: CustomStringConvertible {
                 return "[\((0...Int.random(to: MAX_COLLECTION_SIZE)).map { _ in "\"\(randomName())\" : \(generator())" }.joined(separator: ", "))]"
             }
         }
-        
+
         if isOptional && Bool.random() {
             return "nil"
         }
-        
+
         switch type {
         case .int:
             return wrap { String(describing: Int.random()) }
@@ -91,15 +91,15 @@ struct Element: CustomStringConvertible {
             return wrap { "Date(timeIntervalSinceReferenceDate: \(Double.random()))" }
         }
     }
-    
+
     var key: String {
         return "RecordDictionaryKeys.\(name.uppercased())"
     }
-    
+
     var shortKey: String {
         return ".\(name.uppercased())"
     }
-    
+
     var description: String {
         return "\(isMutable ? _var : _let) \(name): \(wrapper.wrap(type))\(isOptional ? "?" : "")"
     }

@@ -13,11 +13,11 @@ func structurePassing(mutable: Bool) -> String {
     func structure\(mutable ? _Var : _Let)Passing(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) record = randomRecordStructure()
         \(MAKE_ARRAY("declarations"))
-    
+
         \(START_MEASURING)
         \(USE_RECORD)
         \(INCREMENT_COUNTER)
-    
+
         \(mutable ? "record = randomRecordStructure()" : "")
         \(MAKE_ARRAY())
     }

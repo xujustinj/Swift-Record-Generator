@@ -13,12 +13,12 @@ func structureSerialization(mutable: Bool) -> String {
     func structure\(mutable ? _Var : _Let)Serialization(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) record = randomRecordStructure()
         \(MAKE_ARRAY("declarations"))
-    
+
         \(START_MEASURING)
         let recordSerialized = try! encoder.encode(record)
         \(END_MEASURING)
         \(INCREMENT_COUNTER)
-    
+
         \(mutable ? "record = randomRecordStructure()" : "")
         \(MAKE_ARRAY(of: ["recordSerialized"]))
     }

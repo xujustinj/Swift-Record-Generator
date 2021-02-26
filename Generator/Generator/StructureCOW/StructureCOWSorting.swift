@@ -10,7 +10,7 @@ import Foundation
 
 func structureCOWSorting(by element: Element, mutable: Bool) -> String {
     let sort = mutable ? "array.sort" : "let sorted = array.sorted"
-    
+
     var criterion: String
     if element.isOptional {
         if element.wrapper == .none {
@@ -28,7 +28,7 @@ func structureCOWSorting(by element: Element, mutable: Bool) -> String {
             criterion = "$0.val.\(element.name).count < $1.val.\(element.name).count"
         }
     }
-    
+
     return """
     func structureCOW\(mutable ? _Var : _Let)Sorting(\(COUNTER_PARAMETER)) {
         \(mutable ? _var : _let) array = fill(ARRAY_SIZE) { Box(randomRecordStructure()) }

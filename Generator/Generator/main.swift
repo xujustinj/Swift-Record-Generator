@@ -9,7 +9,8 @@
 import Foundation
 
 // CONFIGURABLE VALUES
-let GENERATOR_PATH = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("SwiftRecordGenerator").appendingPathComponent("Generated").appendingPathComponent("Generated").appendingPathComponent("Generated")
+let GENERATED_PROJECT_PATH = FileManager.default.currentDirectoryPath.appendingPathComponent("generated")
+let GENERATED_PATH = GENERATED_PROJECT_PATH.appendingPathComponent("Generated").appendingPathComponent("Generated")
 let ELEMENT_COUNT = 16
 let MAX_STRING_LENGTH: Int = 64
 let MIN_NAME_LENGTH: Int = 4

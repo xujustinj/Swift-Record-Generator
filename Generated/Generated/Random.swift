@@ -16,7 +16,7 @@ extension Int: Randomizable {
     @inline(__always) static func random() -> Int {
         return random(in: min...max)
     }
-    
+
     @inline(__always) static func random(to x: Int) -> Int {
         if x > 0 {
             return random(in: 0...x)
@@ -53,7 +53,7 @@ extension String: Randomizable {
         }
         return str
     }
-    
+
     @inline(__always) static func randomName() -> String {
         var str = String(VALID_NAME_FIRST_CHARS.randomElement()!)
         for _ in 1...Int.random(in: MIN_NAME_LENGTH..<MAX_NAME_LENGTH) {
