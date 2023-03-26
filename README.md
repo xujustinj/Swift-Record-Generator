@@ -7,7 +7,7 @@ A record is a collection of named data elements. In Swift 4, records can be impl
 - structs (possibly with Copy-on-Write)
 - classes
 
-`generator` randomly builds a record schema and implements the same schema using each data structures. The code is saved in the `generated` project, which can run the following performance tests:
+`generator` randomly builds a record schema and implements the same schema using each data structure. The code is saved in the `generated` project, which can run the following performance tests:
 
 - "initializing" a new record instance from a given list of random values
 - retrieving values of elements
